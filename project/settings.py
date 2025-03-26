@@ -25,7 +25,8 @@ SECRET_KEY = 'django-insecure-v86r8&(rh5@n9^qzdqep@k+n18k51xt@h=gk(o-9$*f16ii&13
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
+CSR_TRUSTED_ORIGINS=['https://todo-bdky.onrender.com']
 
 
 # Application definition
