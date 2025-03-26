@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDo</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body class="bg-gray-400 flex flex-col items-center">
+    {% for task in tasks  %}
+    <div class="p-3 bg-white h-[25vh] w-[55%] mt-5 rounded-xl flex justify-between flex-col">
+        <div class="flex justify-between">
+        
+            <p class="text-green-400 font-bold {% if task.completed %} line-through {% endif %}">{{ task.title }} </p>
+            <a href="{% url 'toggle_completed' task.id %}">
+            <i class='bx bx-check-circle {% if task.completed %} text-green-600 {% else %} text-red-600 {% endif %}'></i>
+            </a>
+    </div>
+       <p class="text-gray-400 font-bold"> {{task.description}}</p>
+        <hr> 
+        <div class="flex justify-between">
+            <p class="text-gray-400 font-bold"> {% if task.completed %} completed {% else %} {{task.due_date}} {{task.due_time}} {% endif %}</p>
+            <a href="{% url 'delete_task' task.id %}">
+                <i class='bx bxs-trash text-red-600' ></i>  
+            </a>
+        </div> 
+    </div>
+    {% endfor %}
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+</body>
+</html>
